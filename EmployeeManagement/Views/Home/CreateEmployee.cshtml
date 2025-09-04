@@ -1,0 +1,94 @@
+﻿@model EmpViewModel
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<style>
+    .page-background {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 600px;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    .btn {
+        border-radius: 8px;
+    }
+</style>
+
+
+<div class="page-background">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center mb-4">Create New Employee</h3>
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @ViewBag.Message
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form asp-action="CreateEmployee" method="post" novalidate>
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="form-label">First Name<span class="text-danger">*</span></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Department" class="form-label">Department<span class="text-danger">*</span></label>
+                    <input asp-for="Department" class="form-control" />
+                    <span asp-validation-for="Department" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MobileNumber" class="form-label">Mobile Number<span class="text-danger">*</span></label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email<span class="text-danger">*</span></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Address<span class="text-danger">*</span></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary ms-2">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

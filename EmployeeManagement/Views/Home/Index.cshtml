@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    int srno = 0;
+}
+
+@model IEnumerable<Employee>
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h5>Employee List</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr class="table-info">
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Department</th>
+                    <th>Address</th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        srno++;
+                        <tr>
+                            <td>@srno</td>
+                            <td>@item.FirstName&nbsp;@item.LastName</td>
+                            <td>@item.Email</td>
+                            <td>@item.MobileNumber</td>
+                            <td>@item.Department</td>
+                            <td>@item.Address</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
